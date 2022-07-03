@@ -11,25 +11,25 @@ public class ShoppingCart {
 
 	public void action(Product product, String action) {
 		if (action.equals("add")){
-		for (CartLine cline : list) {
-			if (cline.getP().getProductnumber().equals(product.getProductnumber())) {
-				cline.setQ(cline.getQ()+1);
+		for (CartLine cartLine : list) {
+			if (cartLine.getProduct().getProductnumber().equals(product.getProductnumber())) {
+				cartLine.setQuantity(cartLine.getQuantity()+1);
 				return;
 			}
 		}
-		CartLine cline = new CartLine();
-		cline.setP(product);
-		cline.setQ(1);
-		list.add(cline);
+		CartLine cartLine = new CartLine();
+		cartLine.setProduct(product);
+		cartLine.setQuantity(1);
+		list.add(cartLine);
 		}
 		else{
 			if (action.equals("remove")){
 			Iterator<CartLine> iter = list.iterator();
 			while (iter.hasNext()){
-				CartLine cline = iter.next();
-				if (cline.getP().getProductnumber().equals(product.getProductnumber())){
-					if (cline.getQ()>1){
-						cline.setQ(cline.getQ()-1);
+				CartLine cartLine = iter.next();
+				if (cartLine.getProduct().getProductnumber().equals(product.getProductnumber())){
+					if (cartLine.getQuantity()>1){
+						cartLine.setQuantity(cartLine.getQuantity()-1);
 					}
 					else{
 						iter.remove();
@@ -39,24 +39,24 @@ public class ShoppingCart {
 			}
 			else{ //action is print
 				System.out.println("Content of the shoppingcart:");
-				for (CartLine cline : list) {
-					System.out.println(cline.getQ() + " "
-							+ cline.getP().getProductnumber() + " "
-							+ cline.getP().getDescription() + " "
-							+ cline.getP().getPrice());
+				for (CartLine cartLine : list) {
+					System.out.println(cartLine.getQuantity() + " "
+							+ cartLine.getProduct().getProductnumber() + " "
+							+ cartLine.getProduct().getDescription() + " "
+							+ cartLine.getProduct().getPrice());
 				}
-				System.out.println("Total price ="+getT());
+				System.out.println("Total price ="+getTotal());
 			}
 		}
 	}
 
 	
 	// get total price
-	public double getT(){
-		double tp = 0.0;
+	public double getTotal(){
+		double totalPrice = 0.0;
 		for (CartLine c : list) {
-			tp=tp+(c.getP().getPrice() * c.getQ());
+			totalPrice=totalPrice+(c.getProduct().getPrice() * c.getQuantity());
 		}
-		return tp;
+		return totalPrice;
 	}
 }

@@ -20,49 +20,69 @@ public class MortgageCalculator {
 			}
 			if(monthlyIncome>=3000 && monthlyIncome<5000){
 				mediumIncome=true;
+
+
 			}
+		}
+		public boolean isProfession(String profession){
+			boolean isDevevelopmetTeam=false;
+			boolean isDevopsTeam=false;
+			boolean isAcdeminicTeam=false;
+
+			if (profession.equals("Developer") || profession.equals("Architect") || profession.equals("Scrum master")){
+				isDevevelopmetTeam=true;
+			}
+			if (profession.equals("Tester") || profession.equals("System Administrator") || profession.equals("Technical writer")) {
+				isDevopsTeam=true;
+			}
+			if (profession.equals("Department head") || profession.equals("Professor") ){
+				isAcdeminicTeam=true;
+			}
+
+
 		}
 
 		if (! married) {
 			isMonthlyIncome(monthlyIncome);
+			isProfession(profession);
 			if (age >18 && isBasicIncome) {
-				if (profession.equals("Developer") || profession.equals("Architect") || profession.equals("Scrum master")) {
+				if (isDevevelopmetTeam) {
 					result = 160000;
 				}
 				
-				if (profession.equals("Tester") || profession.equals("System Administrator") || profession.equals("Technical writer")) {
+				if (isDevopsTeam) {
 					result = 120000;
 				}
 				
-				if (profession.equals("Department head") || profession.equals("Professor") ) {
+				if (isAcdeminicTeam ) {
 					result = 220000;
 				}
 				
 			}
 			if (age >18 && isMediumIncome) {
-				if (profession.equals("Developer") || profession.equals("Architect") || profession.equals("Scrum master")) {
+				if (isDevevelopmetTeam) {
 					result = 180000;
 				}
 				
-				if (profession.equals("Tester") || profession.equals("System Administrator") || profession.equals("Technical writer")) {
+				if (isDevopsTeam) {
 					result = 140000;
 				}
 				
-				if (profession.equals("Department head") || profession.equals("Professor") ) {
+				if (isAcdeminicTeam) {
 					result = 250000;
 				}
 				
 			}
 			if (age >18 && monthlyIncome>=5000) {
-				if (profession.equals("Developer") || profession.equals("Architect") || profession.equals("Scrum master")) {
+				if (isDevevelopmetTeam) {
 					result = 220000;
 				}
 				
-				if (profession.equals("Tester") || profession.equals("System Administrator") || profession.equals("Technical writer")) {
+				if (isDevopsTeam) {
 					result = 160000;
 				}
 				
-				if (profession.equals("Department head") || profession.equals("Professor") ){
+				if (isAcdeminicTeam){
 					 result = 280000;
 				}
 				
@@ -74,42 +94,42 @@ public class MortgageCalculator {
 		else {
 			double totalIncome = monthlyIncome + monthlyIncomePartner * 0.94; 
 			if (age >18 && isBasicIncome) {
-				if (profession.equals("Developer") || profession.equals("Architect") || profession.equals("Scrum master")){
+				if (isDevevelopmetTeam){
 					result = 160000;
 				} 
 				
-				if (profession.equals("Tester") || profession.equals("System Administrator") || profession.equals("Technical writer")) {
+				if (isDevopsTeam) {
 					result = 120000;
 				}
-				if (profession.equals("Department head") || profession.equals("Professor") ) {
+				if (isAcdeminicTeam ) {
 					result = 220000;
 				}
 				
 			}
 			if (age >18 && isMediumIncome) {
-				if (profession.equals("Developer") || profession.equals("Architect") || profession.equals("Scrum master")) {
+				if (isDevevelopmetTeam) {
 					result = 180000;
 				}
 				
-				if (profession.equals("Tester") || profession.equals("System Administrator") || profession.equals("Technical writer")){
+				if (isDevopsTeam){
 					result = 140000;
 				} 
 				
-				if (profession.equals("Department head") || profession.equals("Professor") ) {
+				if (isAcdeminicTeam) {
 					result = 250000;
 				}
 				
 			}
 			if (age >18 && 5000<=totalIncome) {
-				if (profession.equals("Developer") || profession.equals("Architect") || profession.equals("Scrum master")) {
+				if (isDevevelopmetTeam) {
 					result = 220000;
 				}
 				
-				if (profession.equals("Tester") || profession.equals("System Administrator") || profession.equals("Technical writer")) {
+				if (isDevopsTeam) {
 					result = 160000;
 				}
 				
-				if (profession.equals("Department head") || profession.equals("Professor") ) {
+				if (isAcdeminicTeam ) {
 						result = 280000;
 				}
 			
